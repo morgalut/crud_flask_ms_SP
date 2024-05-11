@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Car</title>
+</head>
+<body>
+    <h1>Update Car</h1>
+    <form action="/update/{{ record.CarID }}" method="POST">
+        <label for="model">Model:</label><br>
+        <input type="text" id="model" name="model" value="{{ record.Model }}" required><br>
+        <label for="color">Color:</label><br>
+        <input type="text" id="color" name="color" value="{{ record.Color }}" required><br>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="{{ record.Name }}" required><br>
+        <label for="manufacture_year">Manufacture Year:</label><br>
+        <input type="number" id="manufacture_year" name="manufacture_year" value="{{ record.ManufactureYear }}" required><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" step="0.01" value="{{ record.Price }}" required><br><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

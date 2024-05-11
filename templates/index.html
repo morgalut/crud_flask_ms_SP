@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Inventory</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Inventory</h1>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Name</th>
+            <th>Manufacture Year</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.Model }}</td>
+            <td>{{ record.Color }}</td>
+            <td>{{ record.Name }}</td>
+            <td>{{ record.ManufactureYear }}</td>
+            <td>{{ record.Price }}</td>
+            <td>
+                <a href="{{ url_for('delete', id=record.CarID) }}">Delete</a>
+                <a href="{{ url_for('update', id=record.CarID) }}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h1>Add a New Car</h1>
+    <form action="/add" method="POST">
+        <label for="model">Model:</label><br>
+        <input type="text" id="model" name="model" required><br>
+        <label for="color">Color:</label><br>
+        <input type="text" id="color" name="color" required><br>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="manufacture_year">Manufacture Year:</label><br>
+        <input type="number" id="manufacture_year" name="manufacture_year" required><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
